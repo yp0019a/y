@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+
+     <link rel="icon" href="icon.png" type="image/x-icon">
+    
+    <link rel="apple-touch-icon" href="icon.png">
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色介紹 - JOJO 不滅鑽石</title>
+    <style>
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        
+        body {
+            background: linear-gradient(135deg, #f3e5f5 0%, #fffde7 100%);
+            color: #333; 
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid #f7e018;
+        }
+
+        .menu-btn {
+            position: absolute;
+            left: 50px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .menu-btn div {
+            width: 30px;
+            height: 3px;
+            background-color: #512da8; 
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover { transform: scale(1.1); }
+
+        
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1200;
+            top: 0;
+            left: 0;
+            background-color: rgba(81, 45, 168, 0.98);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .side-nav a {
+            padding: 20px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: 0.3s;
+            letter-spacing: 2px;
+
+        }
+
+        .side-nav a:hover {
+            color: #f7e018;
+            letter-spacing: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 45px;
+            font-size: 36px;
+            color: white;
+            cursor: pointer;
+
+
+        }
+
+        
+        .page-content { 
+            padding-top: 120px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding-bottom: 100px; 
+
+        }
+        
+      
+        .char-category-nav {
+             display: flex; 
+             justify-content: center; 
+             flex-wrap: wrap; 
+             gap: 15px; 
+             margin-bottom: 50px; 
+             padding: 0 20px; 
+        
+        }
+
+
+        .cat-link { 
+            padding: 10px 20px; 
+            background: #512da8; 
+            color: #f7e018; 
+            border-radius: 30px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 0.9rem; 
+            transition: 0.3s; 
+        }
+
+
+        .cat-link:hover { 
+            background: #f7e018; 
+            color: #512da8; 
+            transform: scale(1.05);
+        
+        
+        }
+
+        
+        .category-title { 
+            font-size: 2rem; 
+            color: #512da8; 
+            margin: 80px 0 30px 20px; 
+            border-left: 8px solid #f7e018; 
+            padding-left: 15px; 
+        
+        
+        }
+
+        
+        .char-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+            gap: 30px; 
+            padding: 20px; 
+        
+        
+        }
+
+        
+        .char-card { 
+            background: white; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            transition: 0.4s; text-align: center; 
+            padding-bottom: 20px; 
+        
+        
+        }
+
+
+
+        .char-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(81, 45, 168, 0.2);
+        
+        }
+
+        
+        .char-img-wrap { 
+            width: 100%; 
+            aspect-ratio: 1 / 1; 
+            overflow: hidden; 
+            background-color: #eee; 
+        }
+
+        .char-img-wrap img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: 0.5s; 
+        }
+
+        .char-card:hover img { 
+            transform: scale(1.1);
+        
+        }
+        
+        
+        .char-card h3 { 
+            font-size: 1.3rem; 
+            color: #512da8; 
+            margin: 15px 0 5px 0; 
+        }
+
+        .stand-name { 
+            font-size: 0.8rem; 
+            color: #f7e018; 
+            background: #512da8; 
+            display: inline-block; 
+            padding: 2px 12px;
+            border-radius: 4px; 
+            margin-bottom: 10px; 
+            min-height: 20px; 
+        
+        }
+        .char-desc { 
+            font-size: 0.85rem; 
+            color: #666; 
+            padding: 0 15px; 
+            line-height: 1.6; 
+        
+        }
+
+         .btn-next {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 12px 40px;
+            background: #f7e018;
+            color: #512da8;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-next:hover { transform: translateY(-5px); box-shadow: 0 5px 15px #00000033; }
+
+        footer { 
+            text-align: center; 
+            padding: 50px; 
+            background: #512da8; 
+            color: white; 
+            margin-top: 50px; 
+        }
+
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+      <nav>
+        <div class="menu-btn" onclick="openNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
+        <div class="logo">
+            <a href="21212.html">
+                <img src="LOGO.png" alt="JOJO LOGO">
+            </a>
+        </div>
+    </nav>
+
+    <div id="mySidenav" class="side-nav">
+        <span class="close-btn" onclick="closeNav()">&times;</span>
+        <a href="21212.html">首頁</a>
+        <a href="story.html">故事大綱</a>
+        <a href="characters.html">角色介紹</a>
+        <a href="music.html">音樂視聽</a>
+        <a href="shop.html">周邊商品</a>
+    </div>
+
+
+    <div class="page-content">
+        <div class="char-category-nav">
+            <a href="#cat1" class="cat-link">主角與夥伴們</a>
+            <a href="#cat2" class="cat-link">杜王町的替身使者</a>
+            <a href="#cat3" class="cat-link">敵方替身使者</a>
+            <a href="#cat4" class="cat-link">杜王町的居民</a>
+        </div>
+
+        <h2 id="cat1" class="category-title">主角與夥伴們</h2>
+        <div class="char-grid">
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="仗助2.png" alt=""></div> 
+                <h3>東方 仗助</h3> <div class="stand-name">瘋狂鑽石</div>
+                 <p class="char-desc">杜王町的高中生，擁有修復萬物的能力。</p> </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="康一.jpg" alt=""></div>
+                <h3>廣瀨 康一</h3>
+                <div class="stand-name">迴音</div>
+                <p class="char-desc">仗助最信賴的朋友，替身會隨著心境成長進化。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="億泰.jpg" alt=""></div>
+                <h3>虹村 億泰</h3>
+                <div class="stand-name">轟炸空間</div>
+                <p class="char-desc">性格單純熱血，右手可以削去空間。</p>
+            
+            </div>
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="露伴.jpg" alt=""></div>
+                <h3>岸邊 露伴</h3>
+                <div class="stand-name">天堂之門</div>
+                <p class="char-desc">超人氣漫畫家，對追求真實的創作有著近乎瘋狂的執著。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="承太郎.jpg" alt=""></div>
+                <h3>空条 承太郎</h3>
+                <div class="stand-info">白金之星</div>
+                <p class="char-desc">為了調查喬斯達血脈來到杜王町，擁有時間暫停的能力。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="二喬.jpg" alt=""></div>
+                <h3>喬瑟夫 喬斯達</h3>
+                <div class="stand-name">隱者之紫</div>
+                <p class="char-desc">仗助的生父，雖然年邁但依然擁有敏銳的直覺。</p>
+            </div>
+            
+        </div>
+
+        <h2 id="cat2" class="category-title">杜王町的替身使者</h2>
+        <div class="char-grid">
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="行照.jpg" alt=""></div>
+                <h3>虹村 形兆</h3>
+                <div class="stand-name">極惡中隊</div>
+                <p class="char-desc">虹村億泰的哥哥。為了讓父親解脫，用箭不斷創造出替身使者，試圖尋找能殺死父親之人。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="小林.jpg" alt=""></div>
+                <h3>小林 玉美</h3>
+                <div class="stand-name">心鎖</div>
+                <p class="char-desc">畢業自葡萄丘高中，是個用替身能力來敲詐別人的金光黨。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="間田敏和.jpg" alt=""></div>
+                <h3>間田 敏和</h3><div class="stand-name">表面</div>
+                <p class="char-desc">葡萄丘高中三年級學生，在被箭射中覺醒替身能力。
+                </p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="由花子.jpg" alt=""></div>
+                <h3>山岸 由花子</h3><div class="stand-name">紫色戀人</div>
+                <p class="char-desc">有著病嬌的屬性。原本想殺了康一但反而被其所救，陷入更深的愛戀。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="托尼歐.png" alt=""></div>
+                <h3>托尼歐·托拉薩迪</h3><div class="stand-name">珍珠果醬</div>
+                <p class="char-desc">在料理修行期間覺醒替身能力，來到杜王町經營義大利餐廳「托拉薩迪」。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="靜.jpg" alt=""></div>
+                <h3>靜 喬斯達</h3>
+                <div class="stand-name">透明寶寶</div>
+                <p class="char-desc">被喬瑟夫收養的棄嬰，擁有讓自身透明化的能力。</p>
+            </div>     
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="重重.jpg" alt=""></div>
+                <h3>矢安宮 重清</h3><div class="stand-name">收成者</div>
+                <p class="char-desc">以自己的替身能力在杜王町各處蒐集零錢。偶然發現了吉良吉影的秘密，雖然試圖一戰但仍不幸被其所殺。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="辻彩.jpg" alt=""></div>
+                <h3>辻彩</h3><div class="stand-name">灰姑娘</div>
+                <p class="char-desc">經營灰姑娘美容院的女性美容師，之後遭逃跑的吉良吉影所逼迫、為他換了一張臉。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="支倉未起隆.jpg" alt=""></div>
+                <h3>支倉 未起隆</h3><div class="stand-name">大地風火</div>
+                <p class="char-desc">自麥哲倫雲的外星人，年齡216歲，職業是太空船駕駛，興趣是飼養動物，非常害怕消防車的警笛聲。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="噴.jpg" alt=""></div>
+                <h3>噴上 裕也</h3><div class="stand-name">公路之星</div>
+                <p class="char-desc">暴走族高中生，是個自認外表如米開朗基羅的雕像般俊美的自戀狂，相當有女人緣，有著堪比獵犬的優秀嗅覺。</p>
+            </div>
+
+    
+        </div>
+
+        <h2 id="cat3" class="category-title">敵方替身使者</h2>
+        <div class="char-grid">
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="吉良吉影.jpg" alt=""></div>
+                <h3>吉良 吉影</h3>
+                <div class="stand-name">殺手皇后</div>
+                <p class="char-desc">我的名字叫吉良吉影，33歲。住在杜王町東北部的別墅區一帶...未婚...
+                    我在龜友百貨工作。每天都要加班到晚上八點才能回家。我不抽菸，酒僅止於淺嚐。晚上11點睡，每天都要睡足八小時...
+                    睡前我一定會喝一杯溫牛奶，然後做20分鐘暖身操。上了床馬上熟睡...
+                    一覺到天亮，絕不把疲勞跟壓力留到第二天，醫生都說我很正常。
+                    我只是要說明，我這個人別無奢求。只希望能夠心情平靜地活下去。
+                    「勝負」、「輸贏」是我最不喜歡跟人計較的，因為那會讓自己弄來麻煩跟敵人。
+                    我就是這麼知足的人，這也是我的人生觀。 但如果真的要動手的話，我也是不會輸給任何人的。
+</p>
+            </div>
+            
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="安傑羅.jpg" alt=""></div>
+                <h3>片桐 安十郎</h3><div class="stand-name">水項鍊</div>
+                <p class="char-desc">通稱安傑羅，智商高達160。仗助擊敗他之後，把他與附近的岩石融為一體，成為了杜王町的觀光名勝「安傑羅岩」。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="音石明.jpg" alt=""></div>
+                <h3>音石 明</h3><div class="stand-name">嗆辣紅椒</div>
+                <p class="char-desc">擅長彈奏電吉他的搖滾樂手，夢想是成為像吉米·亨德里克斯或傑夫·貝克一樣的搖滾巨星。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="吉廣.jpg" alt=""></div>
+                <h3>吉良 吉廣</h3><div class="stand-name">原子心之父</div>
+                <p class="char-desc">吉良吉影的父親，被仗助一行人稱為「照片老爹」。非常寵愛自己的兒子。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="猜拳.jpg" alt=""></div>
+                <h3>大柳 賢</h3><div class="stand-name">大人小孩雙拍檔</div>
+                <p class="char-desc">小學六年級學生，非常忌妒岸邊露伴的人生，渴望透過猜拳來超越露伴。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="貓草.jpg" alt=""></div>
+                <h3>貓草</h3><div class="stand-name">迷途貓</div>
+                <p class="char-desc">被川尻忍誤殺之後，從掩埋其屍體的土裡長出來的、一株同時具有貓的特性和植物特性的怪異生物。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="鋼田一豐大.png" alt=""></div>
+                <h3>鋼田一 豊大</h3><div class="stand-name">超級飛人</div>
+                <p class="char-desc">住在廢棄電塔上的怪人，不喜歡與外人接觸，總是戴著人皮面具，讓人無法看見其真實的相貌。</p>
+            </div>
+
+        </div>
+
+        <h2 id="cat4" class="category-title">杜王町的居民</h2>
+       
+        <div class="char-grid">
+           
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="東方朋子.jpg" alt=""></div>
+                <h3>東方 朋子</h3><div class="stand-name">無</div>
+                <p class="char-desc">仗助的母親，性格堅強且充滿活力。</p>
+            </div>
+
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="東方良平.jpg" alt=""></div>
+            <h3>東方 良平</h3><div class="stand-name">無</div>
+            <p class="char-desc">仗助的祖父，守護杜王町多年的老警察。</p></div>
+            
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="杉本鈴美.jpg" alt=""></div>
+                <h3>杉本 鈴美</h3><div class="stand-name">無</div>
+                <p class="char-desc">捨命讓當時借住在自家的年幼露伴逃脫，自己卻被吉良吉影殺害。
+                    徘徊在「不能回頭的小巷」裡，如果在這條巷子回頭，就會被帶往冥界，也就是死。</p>
+            </div>
+            
+            <div class="char-card">
+                <div class="char-img-wrap"><img src="川尻早人.jpg" alt=""></div>
+                <h3>川尻 早人</h3><div class="stand-name">無</div>
+                <p class="char-desc">勇於對抗吉良吉影的小學生，杜王町真正的英雄。</p></div>
+            </div>
+
+        </div>
+
+    <footer>
+        <p>「承太郎先生，快用你無敵的白金之星想想辦法啊！」</p>
+        <a href="music.html" class="btn-next">聆聽音樂原聲帶</a>
+        <p style="font-size: 0.75rem; margin-top: 20px; opacity: 0.7;">&copy; 視設三 411293027 曾郁裴. 僅限網頁設計課程期末作業使用✿^o^✿</p>
+    </footer>
+
+    <script>
+        function openNav() { document.getElementById("mySidenav").style.width = "280px"; }
+        function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
+    </script>
+</body>
+</html>

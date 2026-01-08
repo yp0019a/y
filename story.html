@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+
+     <link rel="icon" href="icon.png" type="image/x-icon">
+    
+    <link rel="apple-touch-icon" href="icon.png">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>故事大綱 - JOJO 不滅鑽石</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        
+        body {
+            background: linear-gradient(135deg, #f3e5f5 0%, #fffde7 100%);
+            color: #333; 
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid #f7e018;
+        }
+
+        .menu-btn {
+            position: absolute;
+            left: 50px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .menu-btn div {
+            width: 30px;
+            height: 3px;
+            background-color: #512da8; 
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover { transform: scale(1.1); }
+
+        
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1200;
+            top: 0;
+            left: 0;
+            background-color: rgba(81, 45, 168, 0.98);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .side-nav a {
+            padding: 20px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: 0.3s;
+            letter-spacing: 2px;
+        }
+
+        .side-nav a:hover {
+            color: #f7e018;
+            letter-spacing: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 45px;
+            font-size: 36px;
+            color: white;
+            cursor: pointer;
+        }
+
+        
+        .page-header {
+            padding-top: 160px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            letter-spacing: 5px;
+            color: #512da8;
+            text-shadow: 3px 3px 0px #f7e018;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 50px; 
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        .section:nth-child(even) { flex-direction: row-reverse; }
+
+        .text-box { 
+            flex: 1.2; 
+            padding: 40px; 
+            background: rgba(255, 255, 255, 0.6); 
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+
+        .text-box h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #512da8;
+            border-bottom: 3px solid #f7e018;
+            display: inline-block;
+        }
+
+        
+        .image-box {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1; 
+        }
+
+        .image-box img {
+            width: 110%; 
+            max-width: 500px;
+            display: block;
+            transition: transform 0.4s;
+            
+        }
+
+        .image-box img:hover {
+            transform: scale(1.1) rotate(2deg); 
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #512da8;
+            color: #fff;
+        }
+
+        .btn-next {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 12px 40px;
+            background: #f7e018;
+            color: #512da8;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-next:hover { transform: translateY(-5px); box-shadow: 0 5px 15px #00000033; }
+    </style>
+</head>
+<body>
+
+      <nav>
+        <div class="menu-btn" onclick="openNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
+        <div class="logo">
+            <a href="21212.html">
+                <img src="LOGO.png" alt="JOJO LOGO">
+            </a>
+        </div>
+    </nav>
+
+    <div id="mySidenav" class="side-nav">
+        <span class="close-btn" onclick="closeNav()">&times;</span>
+        <a href="21212.html">首頁</a>
+        <a href="story.html">故事大綱</a>
+        <a href="characters.html">角色介紹</a>
+        <a href="music.html">音樂視聽</a>
+        <a href="shop.html">周邊商品</a>
+    </div>
+
+    <header class="page-header">
+        <h1>DIAMOND IS UNBREAKABLE</h1>
+        <p>1999 年．杜王町．黃金精神在此覺醒</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <div class="text-box">
+                <h2>奇妙的小鎮：杜王町</h2>
+                <p>位於日本 M 縣 S 市。這裡的天空是黃色的，雲朵是粉紅色的，看似平凡的街道卻充滿了意想不到的驚喜。這是一個與世隔絕的奇妙世界。</p>
+            </div>
+            <div class="image-box">
+                <img src="杜王.png" alt="杜王町">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="text-box">
+                <h2>東方仗助</h2>
+                <p>杜王町最受歡迎的高中生！雖然平時很溫柔，但如果你侮辱他的髮型，他可是會立刻進入暴走模式。他的「瘋狂鑽石」能修復受損的一切。</p>
+            </div>
+            <div class="image-box">
+                <img src="仗助.png" alt="仗助">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="text-box">
+                <h2>命運的「箭」</h2>
+                <p>古老的箭頭在杜王町悄悄流傳，它會選擇擁有強大意志力的人，賜予他們「替身」的力量。是福是禍？這取決於被選中者的內心。</p>
+            </div>
+            <div class="image-box">
+                <img src="箭2.png" alt="箭">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="text-box">
+                <h2>潛伏的陰影</h2>
+                <p>吉良吉影，一個普通的上班族，最大的心願是過著平靜的生活。但他那不可告人的嗜好，卻讓這座小鎮陷入了恐懼之中...</p>
+            </div>
+            <div class="image-box">
+                <img src="吉良.png" alt="吉良吉影">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>「但是我拒絕。」</p>
+        <a href="characters.html" class="btn-next">查看角色檔案</a>
+        <p style="font-size: 0.75rem; margin-top: 20px; opacity: 0.7;">&copy; 視設三 411293027 曾郁裴. 僅限網頁設計課程期末作業使用✿^o^✿</p>
+    </footer>
+
+    <script>
+        function openNav() { document.getElementById("mySidenav").style.width = "300px"; }
+        function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
+    </script>
+</body>
+</html>

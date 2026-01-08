@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+
+     <link rel="icon" href="icon.png" type="image/x-icon">
+    
+    <link rel="apple-touch-icon" href="icon.png">
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JOJO 的奇妙冒險：不滅鑽石</title>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f3e5f5; 
+            overflow-x: hidden;
+        }
+
+        
+
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid #f7e018;
+        }
+
+        .menu-btn {
+            position: absolute;
+            left: 50px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .menu-btn div {
+            width: 30px;
+            height: 3px;
+            background-color: #512da8; 
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover { transform: scale(1.1); }
+
+        
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1200;
+            top: 0;
+            left: 0;
+            background-color: rgba(81, 45, 168, 0.98);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .side-nav a {
+            padding: 20px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: 0.3s;
+            letter-spacing: 2px;
+        }
+
+        .side-nav a:hover {
+            color: #f7e018;
+            letter-spacing: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 45px;
+            font-size: 36px;
+            color: white;
+            cursor: pointer;
+        }
+
+        
+        .hero {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-image: url('封面2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); 
+            z-index: 1;
+        }
+
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2.5s ease-out forwards;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            letter-spacing: 8px;
+            color: #fff;
+            text-shadow: 4px 4px 0px #512da8, 8px 8px 0px #f7e018;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            color: #f7e018;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        
+        .btn-enter {
+            margin-top: 40px;
+            padding: 15px 45px;
+            background: #f7e018;
+            color: #512da8;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: 0.4s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-enter:hover {
+            transform: scale(1.1);
+            background: #fff;
+            box-shadow: 0 8px 25px rgba(247, 224, 24, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="menu-btn" onclick="openNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
+        <div class="logo">
+            <a href="21212.html">
+                <img src="LOGO.png" alt="JOJO LOGO">
+            </a>
+        </div>
+    </nav>
+
+    <div id="mySidenav" class="side-nav">
+        <span class="close-btn" onclick="closeNav()">&times;</span>
+        <a href="21212.html">首頁</a>
+        <a href="story.html">故事大綱</a>
+        <a href="characters.html">角色介紹</a>
+        <a href="music.html">音樂視聽</a>
+        <a href="shop.html">周邊商品</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>JOJO的奇妙冒險：不滅鑽石</h1>
+            <p></p>
+            <a href="story.html" class="btn-enter">探索杜王町</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 視設三 411293027 曾郁裴. 僅限網頁設計課程期末作業使用✿^o^✿</p>
+    </footer>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "300px";
+        }
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+
+</body>
+</html>

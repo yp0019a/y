@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    
+    <link rel="apple-touch-icon" href="icon.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>周邊商品 - JOJO 不滅鑽石</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        
+        body {
+            background: linear-gradient(135deg, #f3e5f5 0%, #fffde7 100%);
+            color: #333; 
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid #f7e018;
+        }
+
+        .menu-btn {
+            position: absolute;
+            left: 50px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .menu-btn div {
+            width: 30px;
+            height: 3px;
+            background-color: #512da8; 
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover { transform: scale(1.1); }
+
+        
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1200;
+            top: 0;
+            left: 0;
+            background-color: rgba(81, 45, 168, 0.98);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .side-nav a {
+            padding: 20px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: 0.3s;
+            letter-spacing: 2px;
+
+        }
+
+        .side-nav a:hover {
+            color: #f7e018;
+            letter-spacing: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 45px;
+            font-size: 36px;
+            color: white;
+            cursor: pointer;
+        }
+        .shop-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-top: 80px; }
+        
+        .shop-header { margin-bottom: 40px; }
+        .shop-header h1 { font-size: 2.5rem; color: #512da8; margin-bottom: 10px; }
+        .shop-header p { color: #666; letter-spacing: 2px; }
+
+        .portal-grid { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; max-width: 1000px; padding: 20px; }
+
+        .portal-card {
+            width: 280px;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #512da8;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            border: 2px solid transparent;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-15px);
+            border-color: #f7e018;
+            background-color: #512da8;
+            color: #f7e018;
+        }
+
+        .portal-card i { font-size: 3rem; margin-bottom: 20px; }
+        .portal-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .portal-card span { font-size: 0.8rem; opacity: 0.8; }
+
+        
+        .shop-bg-img {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 40px;
+            opacity: 0.8;
+            filter: drop-shadow(0 10px 20px rgba(81, 45, 168, 0.2));
+        }
+
+        .btn-next {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 12px 40px;
+            background: #f7e018;
+            color: #512da8;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-next:hover { transform: translateY(-5px); box-shadow: 0 5px 15px #00000033; }
+        
+        footer { 
+            text-align: center; 
+            padding: 50px; 
+            background: #512da8; 
+            color: white; 
+            margin-top: 50px; 
+        }
+
+    </style>
+</head>
+<body>
+
+    
+      <nav>
+        <div class="menu-btn" onclick="openNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
+        <div class="logo">
+            <a href="21212.html">
+                <img src="LOGO.png" alt="JOJO LOGO">
+            </a>
+        </div>
+    </nav>
+
+    <div id="mySidenav" class="side-nav">
+        <span class="close-btn" onclick="closeNav()">&times;</span>
+        <a href="21212.html">首頁</a>
+        <a href="story.html">故事大綱</a>
+        <a href="characters.html">角色介紹</a>
+        <a href="music.html">音樂視聽</a>
+        <a href="shop.html">周邊商品</a>
+    </div>
+
+    <div class="shop-content">
+        <div class="shop-header">
+            <h1>JOJO的奇妙冒險 周邊專區</h1>
+            <p>JoJo's Bizarre Adventure - Official Goods</p>
+        </div>
+
+        <div class="portal-grid">
+            <a href="https://bandainamco-am.co.jp/official_shop/jojo/goods/" target="_blank" class="portal-card">
+                <i class="fas fa-shopping-bag"></i>
+                <h3>JOJO WORLD</h3>
+                <span>JOJO WORLD萬代官方網站</span>
+            </a>
+
+            <a href="https://jumpshop-online.com/collections/jojo?srsltid=AfmBOorlWzpX8XmN49tfdQ3kFb6VPE2-q7tVwaEZuO7eyfIyS5FFAfZ1" target="_blank" class="portal-card">
+                <i class="fas fa-store"></i>
+                <h3>JUMP SHOP</h3>
+                <span>集英社官方周邊商店</span>
+            </a>
+
+            <a href="https://www.ehobbyshop.com.tw/category/37067?srsltid=AfmBOoozfSU3T0BheIw1J1IIeDDO3l3ptM90an5TVxnlKryRyoY34lWj" target="_blank" class="portal-card">
+                <i class="fas fa-fist-raised"></i>
+                <h3>Ehobby</h3>
+                <span>東海模型玩具官方商店</span>
+            </a>
+        </div>
+
+        <img src="group-photo.png" alt="JOJO Group" class="shop-bg-img">
+    </div>
+<footer>
+        <p>「我的名字叫吉良吉影，33歲。住在杜王町東北部的別墅區一帶...未婚...
+                    我在龜友百貨工作。每天都要加班到晚上八點才能回家。我不抽菸，酒僅止於淺嚐。晚上11點睡，每天都要睡足八小時...
+                    睡前我一定會喝一杯溫牛奶，然後做20分鐘暖身操。上了床馬上熟睡...
+                    一覺到天亮，絕不把疲勞跟壓力留到第二天，醫生都說我很正常。
+                    我只是要說明，我這個人別無奢求。只希望能夠心情平靜地活下去。
+                    「勝負」、「輸贏」是我最不喜歡跟人計較的，因為那會讓自己弄來麻煩跟敵人。
+                    我就是這麼知足的人，這也是我的人生觀。 但如果真的要動手的話，我也是不會輸給任何人的。」</p>
+        <a href="21212.html" class="btn-next">回首頁</a>
+        <p style="font-size: 0.75rem; margin-top: 20px; opacity: 0.7;">&copy; 視設三 411293027 曾郁裴. 僅限網頁設計課程期末作業使用✿^o^✿</p>
+ </footer>
+
+    <script>
+        function openNav() { document.getElementById("mySidenav").style.width = "280px"; }
+        function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
+    </script>
+</body>
+</html>
